@@ -1,4 +1,4 @@
-package hw4.player.test;
+package hw4.player.player.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
