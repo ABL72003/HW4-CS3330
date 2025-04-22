@@ -1,29 +1,28 @@
 package hw4.maze;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
- * Represents the NxN maze grid with cells containing directions and an exit
  */
 public class Grid {
 
     private int size;
-    private Cell[][] cells;
+    private List<Row> rows;
     private int agentRow;
     private int agentCol;
 
     /**
-     * Constructs a Grid with a random size (3-7), initializes cell
-     * 
+     * Constructs the Grid with a random size and sets up the maze.
      */
     public Grid() {
-        this.size = generateRand(3, 7);  // Grid size between 3 and 7
-        this.cells = new Cell[size][size];
+        this.size = generateRand(3, 7);
+        this.rows = new ArrayList<>();
 
-        initializeGrid(); // Fill grid with cells and at least one APERTURE each
-
-        placeExit(); // Put exactly one EXIT
-        placeAgent(); // Random agent start position
+        initializeGrid();
+        placeExit();
+        placeAgent();
     }
 
     private int generateRand(int min, int max) {
@@ -32,46 +31,73 @@ public class Grid {
     }
 
     private void initializeGrid() {
-        for (int row = 0; row < size; row++) {
-            for (int col = 0; col < size; col++) {
+        Random rand = new Random();
+
+        for (int i = 0; i < size; i++) {
+            Row row = new Row();
+
+            for (int j = 0; j < size; j++) {
                 Cell cell = new Cell();
 
-                // Create a component array: [up, down, left, right]
-                CellComponents[] components = new CellComponents[4];
-
-                // Ensure at least one APERTURE
+                // Ensure one aperture in the cell
                 int apertureIndex = generateRand(0, 3);
+                CellComponents[] sides = new CellComponents[4]; // up, down, left, right
 
-                for (int i = 0; i < 4; i++) {
-                    if (i == apertureIndex) {
-                        components[i] = CellComponents.APERTURE;
+                for (int k = 0; k < 4; k++) {
+                    if (k == apertureIndex) {
+                        sides[k] = CellComponents.APERTURE;
                     } else {
-                        components[i] = Math.random() < 0.5 ? CellComponents.WALL : CellComponents.APERTURE;
+                        sides[k] = rand.nextBoolean() ? CellComponents.WALL : CellComponents.APERTURE;
                     }
                 }
 
-                // Set components: up, down, left, right
-                cell.setComponents(components[0], components[1], components[2], components[3]);
-
-                cells[row][col] = cell;
+                cell.setComponents(sides[0], sides[1], sides[2], sides[3]);
+                row.addCell(cell);
             }
+
+            rows.add(row);
         }
     }
 
     private void placeExit() {
         int exitRow = generateRand(0, size - 1);
-        cells[exitRow][0].setLeftComponent(CellComponents.EXIT);
+        Cell exitCell = rows.get(exitRow).getCellAt(0);
+        exitCell.setLeft(CellComponents.EXIT);
     }
 
     private void placeAgent() {
-        Random random = new Random();
-        agentRow = generateRand(0, size - 1);
-        agentCol = generateRand(0, size - 1);
-        cells[agentRow][agentCol].setAgent(true);
+        this.agentRow = generateRand(0, size - 1);
+        this.agentCol = generateRand(0, size - 1);
+        rows.get(agentRow).getCellAt(agentCol).setAgent(true);
     }
 
-    public Cell[][] getCells() {
-        return cells;
+    public void updateAgentPosition(int newRow, int newCol) {
+        rows.get(agentRow).getCellAt(agentCol).setAgent(false);
+        rows.get(newRow).getCellAt(newCol).setAgent(true);
+        agentRow = newRow;
+        agentCol = newCol;
+    }
+
+    public void printGrid() {
+        for (int i = 0; i < size; i++) {
+            Row row = rows.get(i);
+            for (int j = 0; j < size; j++) {
+                Cell cell = row.getCellAt(j);
+                if (cell.hasAgent()) {
+                    System.out.print("A ");
+                } else if (cell.getLeft() == CellComponents.EXIT) {
+                    System.out.print("E ");
+                } else {
+                    System.out.print("S ");
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public List<Row> getRows() {
+        return rows;
     }
 
     public int getSize() {
@@ -84,37 +110,5 @@ public class Grid {
 
     public int getAgentCol() {
         return agentCol;
-    }
-
-    public void updateAgentPosition(int newRow, int newCol) {
-        // Clear old position
-        cells[agentRow][agentCol].setAgent(false);
-        // Set new position
-        cells[newRow][newCol].setAgent(true);
-        agentRow = newRow;
-        agentCol = newCol;
-    }
-
-    /**
-     * Prints the grid using:
-     * - 'A' for agent
-     * - 'E' for cell with EXIT on left
-     * - 'S' for a regular space
-     */
-    public void printGrid() {
-        for (int row = 0; row < size; row++) {
-            for (int col = 0; col < size; col++) {
-                Cell cell = cells[row][col];
-                if (cell.hasAgent()) {
-                    System.out.print("A ");
-                } else if (cell.getLeftComponent() == CellComponents.EXIT) {
-                    System.out.print("E ");
-                } else {
-                    System.out.print("S ");
-                }
-            }
-            System.out.println();
-        }
-        System.out.println();
     }
 }
