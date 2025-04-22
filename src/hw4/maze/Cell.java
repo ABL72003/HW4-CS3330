@@ -5,6 +5,7 @@ public class Cell {
 	private CellComponents bottom;
 	private CellComponents left;
 	private CellComponents right;
+	private boolean hasAgent;
 	
 	private Cell cell;
 	
@@ -103,6 +104,41 @@ public class Cell {
 	public String toString() {
 		
 		return "Cell [left=" + cell + "]";
+	}
+	
+	public void setComponents(CellComponents up, CellComponents bottom, CellComponents left, CellComponents right) {
+	    this.up = up;
+	    this.bottom = bottom;
+	    this.left = left;
+	    this.right = right;
+	}
+
+	public void setLeftComponent(CellComponents component) {
+	    this.left = component;
+	}
+
+	public CellComponents getLeftComponent() {
+	    return this.left;
+	}
+
+	public void setAgent(boolean hasAgent) {
+	    this.hasAgent = hasAgent;
+	}
+
+	public boolean hasAgent() {
+	    return this.hasAgent;
+	}
+
+	public CellComponents getUpComponent() {
+	    return up;
+	}
+
+	public CellComponents getDownComponent() {
+	    return bottom;
+	}
+
+	public CellComponents getRightComponent() {
+	    return right;
 	}
 	
 }
