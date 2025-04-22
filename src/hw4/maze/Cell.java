@@ -112,33 +112,13 @@ public class Cell {
 	    this.left = left;
 	    this.right = right;
 	}
-
-	public void setLeftComponent(CellComponents component) {
-	    this.left = component;
-	}
-
-	public CellComponents getLeftComponent() {
-	    return this.left;
-	}
-
+	
 	public void setAgent(boolean hasAgent) {
 	    this.hasAgent = hasAgent;
 	}
 
 	public boolean hasAgent() {
-	    return this.hasAgent;
+	    return hasAgent;
 	}
 
-	public CellComponents getUpComponent() {
-	    return up;
-	}
-
-	public CellComponents getDownComponent() {
-	    return bottom;
-	}
-
-	public CellComponents getRightComponent() {
-	    return right;
-	}
-	
 }
