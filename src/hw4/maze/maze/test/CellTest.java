@@ -18,7 +18,7 @@ import hw4.maze.CellComponents;
 
 class CellTest {
 	
-	private Cell cell = null;
+	private Cell cell = new Cell();
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
