@@ -17,6 +17,7 @@ public class Row {
 	public Row() {
 		this.cells = new ArrayList<>();
 	}
+	
 	/**
 	 *  Constructor with Parameter
 	 * @param cells array list
@@ -28,9 +29,9 @@ public class Row {
  * Gets the cells in a given row 
  * @returns a cell
  */
-	public List<Cell> getCells() {
+	public ArrayList<Cell> getCells() {
 		
-		return cells; 
+		return (ArrayList<Cell>)cells; 
 	}
 	
 	/**
@@ -48,7 +49,7 @@ public class Row {
 		cells.add(cell);
 	}
 
-	
+
 	/**
 	 * Gives a int index to locate a certain index of cell
 	 * @param index
