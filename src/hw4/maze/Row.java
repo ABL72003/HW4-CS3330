@@ -58,7 +58,6 @@ public class Row {
 		
 		return cells.get(index);
 	}
-	
 	/**
 	 * To string override for the Row
 	 */
