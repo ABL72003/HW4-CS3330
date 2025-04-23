@@ -17,6 +17,7 @@ public class Row {
 	public Row() {
 		this.cells = new ArrayList<>();
 	}
+	
 	/**
 	 *  Constructor with Parameter
 	 * @param cells array list
