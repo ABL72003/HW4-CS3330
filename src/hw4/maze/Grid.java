@@ -15,14 +15,24 @@ public class Grid {
 
     /**
      * Constructs the Grid with a random size and sets up the maze.
+     * @param rows2 
      */
-    public Grid() {
+    public Grid(ArrayList<Row> rows2) {
         this.size = generateRand(3, 7);
-        this.rows = new ArrayList<>();
+        setRows(rows2);
 
         initializeGrid();
         placeExit();
         placeAgent();
+    }
+    
+    public Grid(int i) {
+    	this.size = i;
+    	this.rows = new ArrayList<>();
+    	
+    	initializeGrid();
+    	placeExit();
+    	placeAgent();
     }
 
     private int generateRand(int min, int max) {
@@ -111,4 +121,9 @@ public class Grid {
     public int getAgentCol() {
         return agentCol;
     }
+
+	public void setRows(List<Row> row) {
+		this.rows = row;
+		
+	}
 }
