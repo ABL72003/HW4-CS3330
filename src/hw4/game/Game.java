@@ -47,28 +47,6 @@ public class Game {
 		this.game.grid = grid;
 	}
 	
-	private int randWallOrAperture() {
-		Random random = new Random();
-		int movement;
-		
-		movement = random.ints(0, 1).findFirst().getAsInt(); //0 is wall 1 is aperture
-		
-		return movement;
-		
-	}
-	
-	private CellComponents wallOrAperture(int randNum) {
-        switch (randNum) {
-        case 0:
-        	return CellComponents.WALL;
-       	 
-        case 1:
-        	return CellComponents.APERTURE;
-       
-            }
-		return CellComponents.WALL ;
-    }	
-	
 	/**
 	 * Creates a randomly generated NXN grid between 3 and 7
 	 * @param i
@@ -79,61 +57,8 @@ public class Game {
 		if (i < 3 || i > 7) {
 			return null;
 		}
-		Grid grid = new Grid();
-		Row row;
-		
-		
-		
-		for (int j = 0; j < i; j++) {//each row
-			
-			row = new Row();
-			
-			for(int k = 0; k < i; k++) {//each cell
-				Cell cell = new Cell();
-				
-				int up;
-				int down;
-				int left;
-				int right;
-				
-				int count = 0; //if count is 0 after for loop, there were no apertures
-				while (count == 0) {
-					
-					up = randWallOrAperture();
-					if (up == 1) {
-						count ++;
-					}
-					
-					down = randWallOrAperture();
-					if (down == 1) {
-						count ++;
-					}
-					
-					left = randWallOrAperture();
-					if (left == 1) {
-						count ++;
-					}
-					
-					right = randWallOrAperture();
-					if (right == 1) {
-						count ++;
-					}	
-					
-					cell.setUp(wallOrAperture(up));
-					cell.setDown(wallOrAperture(down));
-					cell.setLeft(wallOrAperture(left));
-					cell.setRight(wallOrAperture(right));
-				}
-				
-				row.addCell(cell);
-				
-			}
-			grid.addRow(row); 
-		}
-		
-		
-
-		return null;
+		Grid grid = new Grid(i);
+		return grid;
 	}
 		
 	/**
