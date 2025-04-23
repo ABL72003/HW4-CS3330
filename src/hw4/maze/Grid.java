@@ -9,21 +9,21 @@ import java.util.Random;
 public class Grid {
 
     private int size;
-    private List<Row> rows;
-    private int agentRow;
-    private int agentCol;
+    private ArrayList<Row> rows;
+    private int playerRow;
+    private int playerCol;
 
     /**
      * Constructs the Grid with a random size and sets up the maze.
-     * @param rows2 
+     * @param row 
      */
-    public Grid(ArrayList<Row> rows2) {
+    public Grid(ArrayList<Row> row) {
         this.size = generateRand(3, 7);
-        setRows(rows2);
+        setRows(row);
 
         initializeGrid();
         placeExit();
-        placeAgent();
+        placePlayer();
     }
     
     public Grid(int i) {
@@ -32,7 +32,7 @@ public class Grid {
     	
     	initializeGrid();
     	placeExit();
-    	placeAgent();
+    	placePlayer();
     }
     
     /**
@@ -88,10 +88,10 @@ public class Grid {
      * @param newRow
      * @param newCol
      */
-    private void placeAgent() {
-        this.agentRow = size-1;
-        this.agentCol = size-1;
-        rows.get(agentRow).getCellAt(agentCol).setAgent(true);
+    private void placePlayer() {
+        this.playerRow = size-1;
+        this.playerCol = size-1;
+        rows.get(playerRow).getCellAt(playerCol).setPlayer(true);
     }
     
     /**
@@ -101,10 +101,10 @@ public class Grid {
      */
 
     public void updateAgentPosition(int newRow, int newCol) {
-        rows.get(agentRow).getCellAt(agentCol).setAgent(false);
-        rows.get(newRow).getCellAt(newCol).setAgent(true);
-        agentRow = newRow;
-        agentCol = newCol;
+        rows.get(playerRow).getCellAt(playerCol).setPlayer(false);
+        rows.get(newRow).getCellAt(newCol).setPlayer(true);
+        playerRow = newRow;
+        playerCol = newCol;
     }
 
     
@@ -116,7 +116,7 @@ public class Grid {
             Row row = rows.get(i);
             for (int j = 0; j < size; j++) {
                 Cell cell = row.getCellAt(j);
-                if (cell.hasAgent()) {
+                if (cell.hasPlayer()) {
                     System.out.print("A ");
                 } else if (cell.getLeft() == CellComponents.EXIT) {
                     System.out.print("E ");
@@ -137,15 +137,15 @@ public class Grid {
         return size;
     }
 
-    public int getAgentRow() {
-        return agentRow;
+    public Row getPlayerRow() {
+        return rows.get(playerRow);
     }
 
-    public int getAgentCol() {
-        return agentCol;
+    public Cell getPlayerCol() {
+        return rows.get(playerRow).getCellAt(playerCol);
     }
 
-	public void setRows(List<Row> row) {
+	public void setRows(ArrayList<Row> row) {
 		this.rows = row;
 		
 	}
