@@ -198,7 +198,7 @@ public class Game {
      * @return returns true or false. 
      */
 	public boolean play(Movement movement, Player player) {
-		Cell cell = player.getCurrentRow().getCurrentCell();
+		Cell cell = player.getCurrentCell();
 		boolean move = movement(movement, cell);
 		
 		return move;
