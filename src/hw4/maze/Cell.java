@@ -1,11 +1,13 @@
 package hw4.maze;
-
+/**
+ * 
+ */
 public class Cell {
 	private CellComponents up;
 	private CellComponents bottom;
 	private CellComponents left;
 	private CellComponents right;
-	private boolean hasPlayer;
+	private boolean hasAgent;
 	
 	
 	/**
@@ -16,7 +18,9 @@ public class Cell {
 		this.bottom = null;
 		this.left = null;
 		this.right = null;
-	}
+		this.hasAgent = false;
+	}		
+	
 	
 	/**
 	 * This Constructor sets each position to the given param
@@ -101,23 +105,24 @@ public class Cell {
 	 */
 	@Override
 	public String toString() {
+	    return "Cell [left=" + left + ", right=" + right + ", up=" + up + ", down=" + bottom + "]";
+	}
+
+	public void setComponents(CellComponents cellComponents, CellComponents cellComponents2,
+			CellComponents cellComponents3, CellComponents cellComponents4) {
 		
-		return "Cell [left="  + "]";
+	    this.up = cellComponents;
+	    this.bottom = cellComponents2;
+	    this.left = cellComponents3;
+	    this.right = cellComponents4;
 	}
 	
-	public void setComponents(CellComponents up, CellComponents bottom, CellComponents left, CellComponents right) {
-	    this.up = up;
-	    this.bottom = bottom;
-	    this.left = left;
-	    this.right = right;
+	public void setAgent(boolean hasAgent) {
+	    this.hasAgent = hasAgent;
+	}
+
+	public boolean hasAgent() {
+	    return this.hasAgent;
 	}
 	
-	public void setPlayer(boolean hasAgent) {
-	    this.hasPlayer = hasAgent;
-	}
-
-	public boolean hasPlayer() {
-	    return hasPlayer;
-	}
-
 }
