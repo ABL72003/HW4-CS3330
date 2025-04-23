@@ -48,7 +48,7 @@ public class Row {
 		cells.add(cell);
 	}
 
-	
+
 	/**
 	 * Gives a int index to locate a certain index of cell
 	 * @param index
