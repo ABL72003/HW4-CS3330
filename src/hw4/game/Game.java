@@ -10,7 +10,6 @@ import hw4.player.Movement;
 import hw4.player.Player;
 
 public class Game {
-	private Game game;
 	private Grid grid;
 	
 	
@@ -20,7 +19,7 @@ public class Game {
 	 * @param grid
 	 */
 	public Game(Grid grid) {
-		this.game.grid = grid;
+		this.grid = grid;
 	}
 	
 	/**
@@ -28,7 +27,7 @@ public class Game {
 	 * @param i
 	 */
 	public Game(int i) {
-		this.game.grid = createRandomGrid(i);
+		this.grid = createRandomGrid(i);
 	}
 	
 	/**
@@ -36,7 +35,7 @@ public class Game {
 	 * @return
 	 */
 	public Grid getGrid() {
-		return game.grid;
+		return grid;
 	}
 	
 	/**
@@ -44,7 +43,7 @@ public class Game {
 	 * @param grid
 	 */
 	public void setGrid(Grid grid) {
-		this.game.grid = grid;
+		this.grid = grid;
 	}
 	
 	/**
@@ -134,6 +133,6 @@ public class Game {
 	 */
 	@Override
 	public String toString() {
-		return "Game [grid="+ game + "]";
+		return "Game [grid=" + grid + "]";
 	}
 }

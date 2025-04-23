@@ -5,18 +5,17 @@ public class Cell {
 	private CellComponents bottom;
 	private CellComponents left;
 	private CellComponents right;
-	private boolean hasAgent;
+	private boolean hasPlayer;
 	
-	private Cell cell;
 	
 	/**
 	 * This Constructor sets all positions to null
 	 */
 	public Cell () {
-		this.cell.up = null;
-		this.cell.bottom = null;
-		this.cell.left = null;
-		this.cell.right = null;
+		this.up = null;
+		this.bottom = null;
+		this.left = null;
+		this.right = null;
 	}
 	
 	/**
@@ -27,10 +26,10 @@ public class Cell {
 	 * @param right
 	 */
 	public Cell (CellComponents up, CellComponents bottom, CellComponents left, CellComponents right) {
-		this.cell.up = up;
-		this.cell.bottom = bottom;
-		this.cell.left = left;
-		this.cell.right = right;
+		this.up = up;
+		this.bottom = bottom;
+		this.left = left;
+		this.right = right;
 	}
 	
 	/**
@@ -38,7 +37,7 @@ public class Cell {
 	 * @return returns cell component at up Position
 	 */
 	public CellComponents getUp() {
-		return cell.up;
+		return this.up;
 	}
 	
 	/**
@@ -46,7 +45,7 @@ public class Cell {
 	 * @return returns cell component at bottom position
 	 */
 	public CellComponents getDown() {
-		return cell.bottom;
+		return this.bottom;
 	}
 	
 	/**
@@ -54,7 +53,7 @@ public class Cell {
 	 * @return returns cell component at left position
 	 */
 	public CellComponents getLeft() {
-		return cell.left;
+		return this.left;
 	}
 	
 	/**
@@ -62,7 +61,7 @@ public class Cell {
 	 * @return returns cell component at right position
 	 */
 	public CellComponents getRight() {
-		return cell.right;
+		return this.right;
 	}
 	
 	/**
@@ -70,7 +69,7 @@ public class Cell {
 	 * @param up
 	 */
 	public void setUp(CellComponents up) {
-		this.cell.up = up;
+		this.up = up;
 	}
 	
 	/**
@@ -78,7 +77,7 @@ public class Cell {
 	 * @param bottom
 	 */
 	public void setDown(CellComponents bottom) {
-		this.cell.bottom = bottom;	
+		this.bottom = bottom;	
 	}
 	
 	/**
@@ -86,7 +85,7 @@ public class Cell {
 	 * @param left
 	 */
 	public void setLeft(CellComponents left) {
-		this.cell.left = left;
+		this.left = left;
 	}
 
 	/**
@@ -94,7 +93,7 @@ public class Cell {
 	 * @param right
 	 */
 	public void setRight(CellComponents right) {
-		this.cell.right = right;
+		this.right = right;
 	}
 
 	/**
@@ -103,7 +102,7 @@ public class Cell {
 	@Override
 	public String toString() {
 		
-		return "Cell [left=" + cell + "]";
+		return "Cell [left="  + "]";
 	}
 	
 	public void setComponents(CellComponents up, CellComponents bottom, CellComponents left, CellComponents right) {
@@ -113,12 +112,12 @@ public class Cell {
 	    this.right = right;
 	}
 	
-	public void setAgent(boolean hasAgent) {
-	    this.hasAgent = hasAgent;
+	public void setPlayer(boolean hasAgent) {
+	    this.hasPlayer = hasAgent;
 	}
 
-	public boolean hasAgent() {
-	    return hasAgent;
+	public boolean hasPlayer() {
+	    return hasPlayer;
 	}
 
 }

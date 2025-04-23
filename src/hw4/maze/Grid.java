@@ -17,10 +17,9 @@ public class Grid {
      * Constructs the Grid with a random size and sets up the maze.
      * @param row 
      */
-    public Grid(ArrayList<Row> row) {
+    public Grid() {
+    	this.rows = new ArrayList<>();
         this.size = generateRand(3, 7);
-        setRows(row);
-
         initializeGrid();
         placeExit();
         placePlayer();
@@ -71,7 +70,7 @@ public class Grid {
                 row.addCell(cell);
             }
 
-            rows.add(row);
+            this.rows.add(row);
         }
     }
     /**
@@ -79,8 +78,7 @@ public class Grid {
      */
 
     private void placeExit() {
-        int exitRow = 0;
-        Cell exitCell = rows.get(exitRow).getCellAt(0);
+        Cell exitCell = rows.get(0).getCellAt(0);
         exitCell.setLeft(CellComponents.EXIT);
     }
     /**
