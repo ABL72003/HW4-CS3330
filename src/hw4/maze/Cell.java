@@ -7,7 +7,7 @@ public class Cell {
 	private CellComponents bottom;
 	private CellComponents left;
 	private CellComponents right;
-	private boolean hasAgent;
+	private boolean hasPlayer;
 	
 	
 	/**
@@ -18,7 +18,7 @@ public class Cell {
 		this.bottom = null;
 		this.left = null;
 		this.right = null;
-		this.hasAgent = false;
+		this.hasPlayer = false;
 	}		
 	
 	
@@ -117,12 +117,12 @@ public class Cell {
 	    this.right = cellComponents4;
 	}
 	
-	public void setAgent(boolean hasAgent) {
-	    this.hasAgent = hasAgent;
+	public void setPlayer(boolean hasPlayer) {
+	    this.hasPlayer = hasPlayer;
 	}
 
-	public boolean hasAgent() {
-	    return this.hasAgent;
+	public boolean hasPlayer() {
+	    return this.hasPlayer;
 	}
 	
 }
