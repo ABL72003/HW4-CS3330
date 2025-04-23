@@ -15,20 +15,36 @@ public class Grid {
 
     /**
      * Constructs the Grid with a random size and sets up the maze.
+     * @param rows2 
      */
-    public Grid() {
+    public Grid(ArrayList<Row> rows2) {
         this.size = generateRand(3, 7);
-        this.rows = new ArrayList<>();
+        setRows(rows2);
 
         initializeGrid();
         placeExit();
         placeAgent();
     }
-
+    
+    public Grid(int i) {
+    	this.size = i;
+    	this.rows = new ArrayList<>();
+    	
+    	initializeGrid();
+    	placeExit();
+    	placeAgent();
+    }
+    
+    /**
+     * helper function for random gen
+     */
     private int generateRand(int min, int max) {
         Random random = new Random();
         return random.nextInt(max - min + 1) + min;
     }
+    /**
+     * Initializes grid.
+     */
 
     private void initializeGrid() {
         Random rand = new Random();
@@ -58,18 +74,31 @@ public class Grid {
             rows.add(row);
         }
     }
+    /**
+     * places exit location.
+     */
 
     private void placeExit() {
-        int exitRow = generateRand(0, size - 1);
+        int exitRow = 0;
         Cell exitCell = rows.get(exitRow).getCellAt(0);
         exitCell.setLeft(CellComponents.EXIT);
     }
-
+    /**
+     * places agent cell.
+     * @param newRow
+     * @param newCol
+     */
     private void placeAgent() {
         this.agentRow = generateRand(0, size - 1);
         this.agentCol = generateRand(0, size - 1);
         rows.get(agentRow).getCellAt(agentCol).setAgent(true);
     }
+    
+    /**
+     * updates agent location
+     * @param newRow
+     * @param newCol
+     */
 
     public void updateAgentPosition(int newRow, int newCol) {
         rows.get(agentRow).getCellAt(agentCol).setAgent(false);
@@ -78,6 +107,10 @@ public class Grid {
         agentCol = newCol;
     }
 
+    
+    /**
+     * prints grid 
+     */
     public void printGrid() {
         for (int i = 0; i < size; i++) {
             Row row = rows.get(i);
@@ -111,4 +144,9 @@ public class Grid {
     public int getAgentCol() {
         return agentCol;
     }
+
+	public void setRows(List<Row> row) {
+		this.rows = row;
+		
+	}
 }
