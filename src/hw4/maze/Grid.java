@@ -89,8 +89,8 @@ public class Grid {
      * @param newCol
      */
     private void placeAgent() {
-        this.agentRow = generateRand(0, size - 1);
-        this.agentCol = generateRand(0, size - 1);
+        this.agentRow = size-1;
+        this.agentCol = size-1;
         rows.get(agentRow).getCellAt(agentCol).setAgent(true);
     }
     
