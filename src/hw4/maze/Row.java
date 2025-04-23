@@ -2,27 +2,26 @@ package hw4.maze;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Row {
 /**
  * Private instance variable list of Cell
  */
-	private List<Cell> cells;
+	private ArrayList<Cell> cells;
 	
 	/*
 	 * constructor to declare a empty array list of cells
 	 */
 	public Row() {
-		this.cells = new ArrayList<>();
+		this.cells = new ArrayList<Cell>();
 	}
 	
 	/**
 	 *  Constructor with Parameter
 	 * @param cells array list
 	 */
-	public Row(List<Cell> cells) {
+	public Row(ArrayList<Cell> cells) {
 		this.cells = cells;
 	}
 /**
@@ -38,7 +37,7 @@ public class Row {
 	 * replaces list with new list of cells
 	 * @param cells
 	 */
-	public void setCells(List<Cell> cells) {
+	public void setCells(ArrayList<Cell> cells) {
 		this.cells = cells;
 	}
 	/**
