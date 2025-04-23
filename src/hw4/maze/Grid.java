@@ -149,4 +149,9 @@ public class Grid {
 		this.rows = row;
 		
 	}
+
+	public void addRow(Row row) {
+		this.rows.add(row);
+		
+	}
 }
