@@ -28,9 +28,9 @@ public class Row {
  * Gets the cells in a given row 
  * @returns a cell
  */
-	public List<Cell> getCells() {
+	public ArrayList<Cell> getCells() {
 		
-		return cells; 
+		return (ArrayList<Cell>)cells; 
 	}
 	
 	/**
