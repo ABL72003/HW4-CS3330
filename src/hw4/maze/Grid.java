@@ -60,7 +60,7 @@ public class Grid {
     }
 
     private void placeExit() {
-        int exitRow = generateRand(0, size - 1);
+        int exitRow = 0;
         Cell exitCell = rows.get(exitRow).getCellAt(0);
         exitCell.setLeft(CellComponents.EXIT);
     }
