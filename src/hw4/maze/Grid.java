@@ -34,11 +34,17 @@ public class Grid {
     	placeExit();
     	placeAgent();
     }
-
+    
+    /**
+     * helper function for random gen
+     */
     private int generateRand(int min, int max) {
         Random random = new Random();
         return random.nextInt(max - min + 1) + min;
     }
+    /**
+     * Initializes grid.
+     */
 
     private void initializeGrid() {
         Random rand = new Random();
@@ -68,18 +74,31 @@ public class Grid {
             rows.add(row);
         }
     }
+    /**
+     * places exit location.
+     */
 
     private void placeExit() {
         int exitRow = 0;
         Cell exitCell = rows.get(exitRow).getCellAt(0);
         exitCell.setLeft(CellComponents.EXIT);
     }
-
+    /**
+     * places agent cell.
+     * @param newRow
+     * @param newCol
+     */
     private void placeAgent() {
         this.agentRow = generateRand(0, size - 1);
         this.agentCol = generateRand(0, size - 1);
         rows.get(agentRow).getCellAt(agentCol).setAgent(true);
     }
+    
+    /**
+     * updates agent location
+     * @param newRow
+     * @param newCol
+     */
 
     public void updateAgentPosition(int newRow, int newCol) {
         rows.get(agentRow).getCellAt(agentCol).setAgent(false);
@@ -88,6 +107,10 @@ public class Grid {
         agentCol = newCol;
     }
 
+    
+    /**
+     * prints grid 
+     */
     public void printGrid() {
         for (int i = 0; i < size; i++) {
             Row row = rows.get(i);
