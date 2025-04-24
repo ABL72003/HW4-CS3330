@@ -25,6 +25,10 @@ public class Grid {
         placePlayer();
     }
     
+    /**
+     * Constructor that takes an int between 3 and 7 to create a NXN randomly generated grid
+     * @param i
+     */
     public Grid(int i) {
     	this.size = i;
     	this.rows = new ArrayList<>();
@@ -35,16 +39,24 @@ public class Grid {
     }
     
     /**
+     * Constructor that takes rows to create the grid
+     * @param rows2
+     */
+    public Grid(ArrayList<Row> rows2) {
+		this.rows = rows2;
+	}
+
+	/**
      * helper function for random gen
      */
     private int generateRand(int min, int max) {
         Random random = new Random();
         return random.nextInt(max - min + 1) + min;
     }
+    
     /**
      * Initializes grid.
      */
-
     private void initializeGrid() {
         Random rand = new Random();
 
@@ -73,14 +85,15 @@ public class Grid {
             this.rows.add(row);
         }
     }
+    
     /**
      * places exit location.
      */
-
     private void placeExit() {
         Cell exitCell = rows.get(0).getCellAt(0);
         exitCell.setLeft(CellComponents.EXIT);
     }
+    
     /**
      * places agent cell.
      * @param newRow
@@ -97,7 +110,6 @@ public class Grid {
      * @param newRow
      * @param newCol
      */
-
     public void updateAgentPosition(int newRow, int newCol) {
         rows.get(playerRow).getCellAt(playerCol).setPlayer(false);
         rows.get(newRow).getCellAt(newCol).setPlayer(true);
@@ -126,28 +138,52 @@ public class Grid {
         }
         System.out.println();
     }
-
+    
+    /**
+     * Returns rows
+     * @return
+     */
     public List<Row> getRows() {
         return rows;
     }
-
+    
+    /**
+     * Returns size
+     * @return
+     */
     public int getSize() {
         return size;
     }
-
+    
+    /**
+     * Returns what row the player is in
+     * @return
+     */
     public Row getPlayerRow() {
         return rows.get(playerRow);
     }
-
+    
+    /**
+     * Returns what column the player is in
+     * @return
+     */
     public Cell getPlayerCol() {
         return rows.get(playerRow).getCellAt(playerCol);
     }
-
+    
+    /**
+     * Sets the rows 
+     * @param row
+     */
 	public void setRows(ArrayList<Row> row) {
 		this.rows = row;
 		
 	}
 
+	/**
+	 * Adds a row to the list of rows
+	 * @param row
+	 */
 	public void addRow(Row row) {
 		this.rows.add(row);
 		
