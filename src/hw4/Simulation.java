@@ -1,30 +1,20 @@
 package hw4;
-import hw4.maze.Cell;
-import hw4.maze.CellComponents;
-import hw4.maze.Grid;
-import hw4.maze.Row;
-
-import java.util.ArrayList;
 
 import hw4.game.Game;
-import hw4.player.Movement;
-import hw4.player.Player;
 
 public class Simulation {
 	
     public static void main(String[] args) {
-    	
-        Grid grid = new Grid();
+    	 // Create a new game
+        Game game = new Game(5);
         
-        Player player = new Player(grid.getPlayerRow(), grid.getPlayerCol());
+        // Print the initial game state
+        System.out.println("Initial game state:");
+        System.out.println(game.getGrid()); 
+        game.getGrid().printGrid();
         
-        Game game = new Game(grid);
-        
-        
-        game.play(Movement.LEFT, player);
-        
-        
-        
+        // Start the game
+        System.out.println("Game started...");
         
 	}
 
