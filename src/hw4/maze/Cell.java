@@ -29,7 +29,7 @@ public class Cell {
 	 * @param left
 	 * @param right
 	 */
-	public Cell (CellComponents up, CellComponents bottom, CellComponents left, CellComponents right) {
+	public Cell (CellComponents left, CellComponents right, CellComponents up, CellComponents bottom) {
 		this.up = up;
 		this.bottom = bottom;
 		this.left = left;
@@ -74,6 +74,10 @@ public class Cell {
 	 */
 	public void setUp(CellComponents up) {
 		this.up = up;
+		
+		if (up == null) {
+			this.up = CellComponents.WALL;
+		}
 	}
 	
 	/**
@@ -82,6 +86,10 @@ public class Cell {
 	 */
 	public void setDown(CellComponents bottom) {
 		this.bottom = bottom;	
+		
+		if (bottom == null) {
+			this.bottom = CellComponents.WALL;
+		}
 	}
 	
 	/**
@@ -90,6 +98,10 @@ public class Cell {
 	 */
 	public void setLeft(CellComponents left) {
 		this.left = left;
+		
+		if (left == null) {
+			this.left = CellComponents.WALL;
+		}
 	}
 
 	/**
@@ -98,6 +110,10 @@ public class Cell {
 	 */
 	public void setRight(CellComponents right) {
 		this.right = right;
+		
+		if (right == null) {
+			this.right = CellComponents.WALL;
+		}
 	}
 
 	/**
