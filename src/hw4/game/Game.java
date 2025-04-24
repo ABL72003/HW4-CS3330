@@ -1,11 +1,8 @@
 package hw4.game;
 
-import java.util.Random;
-
 import hw4.maze.Cell;
 import hw4.maze.CellComponents;
 import hw4.maze.Grid;
-import hw4.maze.Row;
 import hw4.player.Movement;
 import hw4.player.Player;
 
@@ -52,7 +49,6 @@ public class Game {
 	 * @return
 	 */
 	public Grid createRandomGrid(int i) {
-		// TODO Auto-generated method stub
 		if (i < 3 || i > 7) {
 			return null;
 		}
@@ -66,7 +62,7 @@ public class Game {
 	 * @param components
 	 * @return Returns true or false
 	 */
-	 private boolean cellComponent(Cell cell, CellComponents components) {
+	 private boolean cellComponent(CellComponents components) {
          switch (components) {
          case APERTURE:
         	 return true;
@@ -74,59 +70,59 @@ public class Game {
         	 return false;
          case EXIT:
         	 return true;
-             }
-		return false;
+	    default:
+		    return false;
+         }
      }	
 	
 	 /**
-	  * If movement is Up, Down, left, or Right, calls cellComponent. If something else, returns false. 
+	  * If movement is Up, Down, Left, or Right, calls cellComponent. If something else, returns false. 
 	  * @param movement
 	  * @param cell
 	  * @return returns true or false
 	  */
-     private boolean movement(Movement movement, Cell cell) {
-    	CellComponents components;
-    	boolean move;
-        switch (movement) {
-        
-        case UP:
-           components = cell.getUp();
-           move = cellComponent(cell, components);
-           return move;
-           
-        case DOWN:
-        	components = cell.getDown();
-            move = cellComponent(cell, components);
-            return move;
-            
-        case LEFT:
-        	components = cell.getLeft();
-            move = cellComponent(cell, components);
-            return move;
-            
-        case RIGHT:
-        	components = cell.getRight();
-            move = cellComponent(cell, components);
-            return move;
-            
-        default:
-            System.out.println("Not a correct movement.");
-            return false;
-            }
-    }
-    
-    /**
-     * Returns true if the player goes through the exit or an aperture. Returns false if player runs into a wall.
-     * @param movement
-     * @param player
-     * @return returns true or false. 
-     */
-	public boolean play(Movement movement, Player player) {
-		Cell cell = player.getCurrentCell();
-		boolean move = movement(movement, cell);
-		
-		return move;
-	}
+	 private boolean movement(Movement movement, Cell cell, Player player) {
+		    CellComponents components;
+		   
+		    switch (movement) {
+		        case UP:
+		            components = cell.getUp();
+		            return cellComponent(components);
+		        case DOWN:
+		            
+		            components = cell.getDown();
+		            return cellComponent(components);
+		        case LEFT:
+		            
+		            components = cell.getLeft();
+		            return cellComponent(components);
+		        case RIGHT:
+		            
+		            components = cell.getRight();
+		            return cellComponent(components);
+		        default:
+		            return false;
+		    }
+		}
+
+
+	 /**
+	  * Returns true if the player goes through the exit or an aperture. Returns false if player runs into a wall.
+	  * @param movement
+	  * @param player
+	  * @return returns true or false. 
+	  */
+	 public boolean play(Movement movement, Player player) {
+		 if (player == null || movement == null) {
+			    return false;
+			}
+
+		    Cell cell = player.getCurrentCell();
+		    return movement(movement, cell, player);
+		}
+
+
+
 
 	/**
 	 * To string override for the Game
