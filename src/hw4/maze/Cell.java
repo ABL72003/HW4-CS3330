@@ -124,19 +124,34 @@ public class Cell {
 	    return "Cell [left=" + left + ", right=" + right + ", up=" + up + ", down=" + bottom + "]";
 	}
 
+	/**
+	 * sets components to given cell
+	 * @param cellComponents
+	 * @param cellComponents2
+	 * @param cellComponents3
+	 * @param cellComponents4
+	 */
 	public void setComponents(CellComponents cellComponents, CellComponents cellComponents2,
-			CellComponents cellComponents3, CellComponents cellComponents4) {
+			CellComponents cellComponents3, CellComponents cellComponents4) {//left right up bottom
 		
-	    this.up = cellComponents;
-	    this.bottom = cellComponents2;
-	    this.left = cellComponents3;
-	    this.right = cellComponents4;
+	    this.left = cellComponents;
+	    this.right = cellComponents2;
+	    this.up = cellComponents3;
+	    this.bottom = cellComponents4;
 	}
 	
+	/**
+	 * sets player
+	 * @param hasPlayer
+	 */
 	public void setPlayer(boolean hasPlayer) {
 	    this.hasPlayer = hasPlayer;
 	}
-
+	
+	/**
+	 * returns player
+	 * @return
+	 */
 	public boolean hasPlayer() {
 	    return this.hasPlayer;
 	}
