@@ -188,4 +188,22 @@ public class Grid {
 		this.rows.add(row);
 		
 	}
+	
+	/**
+	 * To string override for grid
+	 */
+	@Override
+	public String toString() {
+	    String result = "Grid [rows=[";
+
+	    for (int i = 0; i < rows.size(); i++) {
+	        result += rows.get(i).toString();
+	        if (i < rows.size() - 1) {
+	            result += ", ";
+	        }
+	    }
+
+	    result += "]]";
+	    return result;
+	}
 }
