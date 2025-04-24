@@ -24,19 +24,34 @@ public class Player {
         this.currentCell = cell;
     }
 
-    //Getters and Setters (self explanatory)
+    /**
+     * Returns current row
+     * @return
+     */
     public Row getCurrentRow() {
         return currentRow;
     }
-
+    
+    /**
+     * Sets current row
+     * @param currentRow
+     */
     public void setCurrentRow(Row currentRow) {
         this.currentRow = currentRow;
     }
-
+    
+    /**
+     * Returns current cell
+     * @return
+     */
     public Cell getCurrentCell() {
         return currentCell;
     }
-
+    
+    /**
+     * Sets current cell
+     * @param currentCell
+     */
     public void setCurrentCell(Cell currentCell) {
         this.currentCell = currentCell;
     }
